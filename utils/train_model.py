@@ -29,25 +29,33 @@ train['Valencia_wind_deg'] = train['Valencia_wind_deg'].astype(str).str.extract(
 train['Valencia_pressure'].fillna(train['Valencia_pressure'].median(), inplace=True) # mean = 1012.0514065222798  , mode = 1018 , median = 1015
 
 
-train['time'] = pd.to_datetime(train['time'])
+import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
 
+
+
+
+train['time'] = pd.to_datetime(train['time'])
 train['Day'] = train['time'].dt.day
 train['Month'] = train['time'].dt.month
 train['Year'] = train['time'].dt.year
 train['Hour'] = train['time'].dt.hour
 
-X_Train = train [['Year','Month','Day','Hour','Madrid_wind_speed', 'Madrid_humidity', 'Madrid_clouds_all'
-       ,'Madrid_pressure', 'Madrid_rain_1h', 'Madrid_weather_id', 'Madrid_temp',
-       'Seville_humidity', 'Seville_clouds_all', 'Seville_wind_speed',
-       'Seville_pressure', 'Seville_rain_1h', 'Seville_rain_3h',
-       'Seville_weather_id', 'Seville_temp', 'Barcelona_wind_speed',
+X_Train = train [['Year', 'Month', 'Day', 'Hour', 'Madrid_wind_speed', 'Madrid_humidity',
+       'Madrid_clouds_all', 'Madrid_pressure', 'Madrid_rain_1h',
+       'Madrid_weather_id', 'Seville_humidity', 'Seville_clouds_all',
+       'Seville_wind_speed', 'Seville_pressure', 'Seville_rain_1h',
+       'Seville_rain_3h', 'Seville_weather_id', 'Barcelona_wind_speed',
        'Barcelona_wind_deg', 'Barcelona_rain_1h', 'Barcelona_pressure',
-       'Barcelona_rain_3h', 'Barcelona_weather_id', 'Barcelona_temp',
-       'Valencia_wind_speed', 'Valencia_wind_deg', 'Valencia_humidity',
-       'Valencia_snow_3h', 'Valencia_temp',
-       'Bilbao_wind_speed', 'Bilbao_wind_deg', 'Bilbao_clouds_all',
-       'Bilbao_pressure', 'Bilbao_rain_1h', 'Bilbao_snow_3h',
-       'Bilbao_weather_id', 'Bilbao_temp']]
+       'Barcelona_rain_3h', 'Barcelona_weather_id', 'Valencia_wind_speed',
+       'Valencia_wind_deg', 'Valencia_humidity', 'Valencia_snow_3h',
+        'Bilbao_wind_speed', 'Bilbao_wind_deg',
+       'Bilbao_clouds_all', 'Bilbao_pressure', 'Bilbao_rain_1h',
+       'Bilbao_snow_3h', 'Bilbao_weather_id', 'Bilbao_temp'
+       ]]
+
+
+
 
 
 

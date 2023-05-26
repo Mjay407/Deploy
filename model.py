@@ -82,19 +82,18 @@ def _preprocess_data(data):
     feature_vector_df['Year'] = feature_vector_df['time'].dt.year
     feature_vector_df['Hour'] = feature_vector_df['time'].dt.hour
 
-    predict_vector = feature_vector_df [['Year','Month','Day','Hour','Madrid_wind_speed', 'Madrid_humidity', 'Madrid_clouds_all'
-                        
-        ,'Madrid_pressure', 'Madrid_rain_1h', 'Madrid_weather_id', 'Madrid_temp',
-        'Seville_humidity', 'Seville_clouds_all', 'Seville_wind_speed',
-        'Seville_pressure', 'Seville_rain_1h', 'Seville_rain_3h',
-        'Seville_weather_id', 'Seville_temp', 'Barcelona_wind_speed',
-        'Barcelona_wind_deg', 'Barcelona_rain_1h', 'Barcelona_pressure',
-        'Barcelona_rain_3h', 'Barcelona_weather_id', 'Barcelona_temp',
-        'Valencia_wind_speed', 'Valencia_wind_deg', 'Valencia_humidity',
-        'Valencia_snow_3h', 'Valencia_temp',
-        'Bilbao_wind_speed', 'Bilbao_wind_deg', 'Bilbao_clouds_all',
-        'Bilbao_pressure', 'Bilbao_rain_1h', 'Bilbao_snow_3h',
-        'Bilbao_weather_id', 'Bilbao_temp']]
+    predict_vector = feature_vector_df [['Year', 'Month', 'Day', 'Hour', 'Madrid_wind_speed', 'Madrid_humidity',
+       'Madrid_clouds_all', 'Madrid_pressure', 'Madrid_rain_1h',
+       'Madrid_weather_id', 'Seville_humidity', 'Seville_clouds_all',
+       'Seville_wind_speed', 'Seville_pressure', 'Seville_rain_1h',
+       'Seville_rain_3h', 'Seville_weather_id', 'Barcelona_wind_speed',
+       'Barcelona_wind_deg', 'Barcelona_rain_1h', 'Barcelona_pressure',
+       'Barcelona_rain_3h', 'Barcelona_weather_id', 'Valencia_wind_speed',
+       'Valencia_wind_deg', 'Valencia_humidity', 'Valencia_snow_3h',
+        'Bilbao_wind_speed', 'Bilbao_wind_deg',
+       'Bilbao_clouds_all', 'Bilbao_pressure', 'Bilbao_rain_1h',
+       'Bilbao_snow_3h', 'Bilbao_weather_id', 'Bilbao_temp'
+       ]]
     
     # ------------------------------------------------------------------------
 
@@ -116,7 +115,7 @@ def load_model(path_to_model:str):
         The pretrained model loaded into memory.
 
     """
-    return pickle.load(open(path_to_model, 'rb'))
+    return pickle.load(open(path_to_model,'rb'))
 
 
 """ You may use this section (above the make_prediction function) of the python script to implement 
